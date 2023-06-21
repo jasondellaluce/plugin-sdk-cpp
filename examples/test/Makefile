@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2022 The Falco Authors.
+# Copyright (C) 2023 The Falco Authors.
 #
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +15,16 @@
 # limitations under the License.
 #
 
-NAME    := full
+NAME    := test
 OUTPUT  := lib$(NAME).so
 
 SDK_DIR := ../..
-SDK_INCLUDE := $(SDK_DIR)/include
+SDK_INCLUDE := $(SDK_DIR)/include/
 
 all: $(OUTPUT)
 
 clean:
 	rm -rf $(OUTPUT)
 
-$(OUTPUT): src/*.cpp
-	$(CXX) -std=c++0x -fPIC -I$(SDK_INCLUDE) -shared -o $(OUTPUT) src/*.cpp
+$(OUTPUT): test.cpp
+	$(CXX) -std=c++0x -Wall -fPIC -I$(SDK_INCLUDE) -shared -o $(OUTPUT) test.cpp

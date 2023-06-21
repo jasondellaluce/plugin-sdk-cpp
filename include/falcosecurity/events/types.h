@@ -17,8 +17,13 @@ limitations under the License.
 
 #pragma once
 
-#include <falcosecurity/internal/symbols_async.h>
-#include <falcosecurity/internal/symbols_common.h>
-#include <falcosecurity/internal/symbols_extraction.h>
-#include <falcosecurity/internal/symbols_parsing.h>
-#include <falcosecurity/internal/symbols_sourcing.h>
+namespace falcosecurity
+{
+
+// todo(jasondellaluce): autogenerate these and include all of them
+enum event_type
+{
+    PPME_PLUGINEVENT_E = 322,
+    PPME_ASYNCEVENT_E = 402,
+};
+}; // namespace falcosecurity

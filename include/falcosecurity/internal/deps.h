@@ -17,8 +17,15 @@ limitations under the License.
 
 #pragma once
 
-#include <falcosecurity/internal/symbols_async.h>
-#include <falcosecurity/internal/symbols_common.h>
-#include <falcosecurity/internal/symbols_extraction.h>
-#include <falcosecurity/internal/symbols_parsing.h>
-#include <falcosecurity/internal/symbols_sourcing.h>
+#include <falcosecurity/internal/deps/nlohmann/json.hpp>
+
+namespace falcosecurity
+{
+namespace _internal
+{
+
+#include <falcosecurity/internal/deps/plugin_api.h>
+#include <falcosecurity/internal/deps/plugin_types.h>
+
+}; // namespace _internal
+}; // namespace falcosecurity
