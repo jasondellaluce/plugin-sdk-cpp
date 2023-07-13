@@ -77,5 +77,20 @@ limitations under the License.
         p->destroy();                                                          \
         delete p;                                                              \
     }                                                                          \
+                                                                               \
+    FALCOSECURITY_INLINE                                                       \
+    static void plugin_symbols_common(plugin_api* out)                         \
+    {                                                                          \
+        out->get_required_api_version = plugin_get_required_api_version;        \
+        out->get_version = plugin_get_version;                                  \
+        out->get_description = plugin_get_description;                          \
+        out->get_contact = plugin_get_contact;                                  \
+        out->get_name = plugin_get_name;                                        \
+        out->get_init_schema = plugin_get_init_schema;                          \
+        out->get_last_error = plugin_get_last_error;                            \
+        out->init = plugin_init;                                                \
+        out->destroy = plugin_destroy;                                          \
+    }                                                                          \
+                                                                               \
     }; /* _internal */                                                         \
     }; /* falcosecurity */

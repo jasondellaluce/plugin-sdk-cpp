@@ -53,5 +53,15 @@ limitations under the License.
         auto p = static_cast<plugin_mixin<__t>*>(s);                           \
         return p->extract_fields(evt, in);                                     \
     }                                                                          \
+                                                                               \
+    FALCOSECURITY_INLINE                                                       \
+    static void plugin_symbols_field_extraction(plugin_api* out)               \
+    {                                                                          \
+        out->get_extract_event_types = plugin_get_extract_event_types;          \
+        out->get_extract_event_sources = plugin_get_extract_event_sources;      \
+        out->get_fields = plugin_get_fields;                                    \
+        out->extract_fields = plugin_extract_fields;                            \
+    }                                                                          \
+                                                                               \
     }; /* _internal */                                                         \
     }; /* falcosecurity */

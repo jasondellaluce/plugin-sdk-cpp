@@ -17,8 +17,4 @@ limitations under the License.
 
 #pragma once
 
-#include <falcosecurity/internal/symbols_async.h>
-#include <falcosecurity/internal/symbols_common.h>
-#include <falcosecurity/internal/symbols_extraction.h>
-#include <falcosecurity/internal/symbols_parsing.h>
-#include <falcosecurity/internal/symbols_sourcing.h>
+#include <falcosecurity/internal/export.h>

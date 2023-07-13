@@ -47,5 +47,14 @@ limitations under the License.
         auto p = static_cast<plugin_mixin<__t>*>(s);                           \
         return p->set_async_event_handler(o, h);                               \
     }                                                                          \
+                                                                               \
+    FALCOSECURITY_INLINE                                                       \
+    static void plugin_symbols_async_events(plugin_api* out)                   \
+    {                                                                          \
+        out->get_async_events = plugin_get_async_events;                       \
+        out->get_async_event_sources = plugin_get_async_event_sources;         \
+        out->set_async_event_handler = plugin_set_async_event_handler;         \
+    }                                                                          \
+                                                                               \
     }; /* _internal */                                                         \
     }; /* falcosecurity */
