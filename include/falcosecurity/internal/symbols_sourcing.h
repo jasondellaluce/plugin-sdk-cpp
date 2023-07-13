@@ -27,16 +27,16 @@ limitations under the License.
                                                                                \
     static plugin_mixin<__t> s_plugin_sourcing;                                \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     uint32_t plugin_get_id() { return s_plugin_sourcing.get_id(); }            \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_event_source()                                      \
     {                                                                          \
         return s_plugin_sourcing.get_event_source();                           \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_list_open_params(ss_plugin_t* s, ss_plugin_rc* rc)      \
     {                                                                          \
         auto p = static_cast<plugin_mixin<__t>*>(s);                           \
@@ -50,7 +50,7 @@ limitations under the License.
         return p->event_to_string(evt);                                        \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     ss_instance_t* plugin_open(ss_plugin_t* s, const char* params,             \
                                ss_plugin_rc* rc)                               \
     {                                                                          \
@@ -58,14 +58,14 @@ limitations under the License.
         return p->open<__i>(params, rc);                                       \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     void plugin_close(ss_plugin_t* s, ss_instance_t* h)                        \
     {                                                                          \
         auto p = static_cast<plugin_mixin<__t>*>(s);                           \
         return p->close<__i>(h);                                               \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_progress(ss_plugin_t* s, ss_instance_t* h,          \
                                     uint32_t* progress_pct)                    \
     {                                                                          \
@@ -73,7 +73,7 @@ limitations under the License.
         return p->get_progress<__i>(h, progress_pct);                          \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     ss_plugin_rc plugin_next_batch(ss_plugin_t* s, ss_instance_t* h,           \
                                    uint32_t* nevts, ss_plugin_event*** evts)   \
     {                                                                          \

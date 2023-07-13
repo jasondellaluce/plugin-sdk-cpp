@@ -27,41 +27,41 @@ limitations under the License.
                                                                                \
     static plugin_mixin<__t> s_plugin_common;                                  \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_required_api_version()                              \
     {                                                                          \
         return s_plugin_common.get_required_api_version();                     \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_version() { return s_plugin_common.get_version(); } \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_name() { return s_plugin_common.get_name(); }       \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_description()                                       \
     {                                                                          \
         return s_plugin_common.get_description();                              \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_contact() { return s_plugin_common.get_contact(); } \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_init_schema(ss_plugin_schema_type* st)              \
     {                                                                          \
         return s_plugin_common.get_init_schema(st);                            \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_last_error(ss_plugin_t* s)                          \
     {                                                                          \
         auto p = static_cast<plugin_mixin<__t>*>(s);                           \
         return p->get_last_error();                                            \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     ss_plugin_t* plugin_init(const ss_plugin_init_input* input,                \
                              ss_plugin_rc* rc)                                 \
     {                                                                          \
@@ -70,7 +70,7 @@ limitations under the License.
         return static_cast<ss_plugin_t*>(res);                                 \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     void plugin_destroy(ss_plugin_t* s)                                        \
     {                                                                          \
         auto p = static_cast<plugin_mixin<__t>*>(s);                           \

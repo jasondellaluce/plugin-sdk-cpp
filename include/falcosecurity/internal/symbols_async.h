@@ -27,19 +27,19 @@ limitations under the License.
                                                                                \
     static plugin_mixin<__t> s_plugin_async;                                   \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_async_events()                                      \
     {                                                                          \
         return s_plugin_async.get_async_events();                              \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_async_event_sources()                               \
     {                                                                          \
         return s_plugin_async.get_async_event_sources();                       \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     ss_plugin_rc                                                               \
     plugin_set_async_event_handler(ss_plugin_t* s, ss_plugin_owner_t* o,       \
                                    const ss_plugin_async_event_handler_t h)    \

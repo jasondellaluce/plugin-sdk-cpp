@@ -17,7 +17,11 @@ limitations under the License.
 
 #pragma once
 
-#ifdef DEBUG
+#define FALCOSECURITY_INLINE __attribute__((always_inline)) inline
+
+#define FALCOSECURITY_SYMBOL extern "C"
+
+#if defined(_DEBUG) or defined(DEBUG)
 #define FALCOSECURITY_ASSERT(__x, __msg)                                       \
     {                                                                          \
         if(!(__x))                                                             \
@@ -31,10 +35,6 @@ limitations under the License.
 #else
 #define FALCOSECURITY_ASSERT(__x, __msg)
 #endif
-
-#define FALCOSECURITY_EXPORT extern "C"
-
-#define FALCOSECURITY_INLINE __attribute__((always_inline)) inline
 
 #define FALCOSECURITY_CATCH_ALL(errdest, block)                                \
     try                                                                        \

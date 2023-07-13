@@ -27,25 +27,25 @@ limitations under the License.
                                                                                \
     static plugin_mixin<__t> s_plugin_extraction;                              \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     uint16_t* plugin_get_extract_event_types(uint32_t* numtypes)               \
     {                                                                          \
         return s_plugin_extraction.get_extract_event_types(numtypes);          \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_extract_event_sources()                             \
     {                                                                          \
         return s_plugin_extraction.get_extract_event_sources();                \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     const char* plugin_get_fields()                                            \
     {                                                                          \
         return s_plugin_extraction.get_fields();                               \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_EXPORT                                                       \
+    FALCOSECURITY_SYMBOL                                                       \
     ss_plugin_rc                                                               \
     plugin_extract_fields(ss_plugin_t* s, const ss_plugin_event_input* evt,    \
                           const ss_plugin_field_extract_input* in)             \
