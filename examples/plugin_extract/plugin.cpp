@@ -47,7 +47,11 @@ class my_plugin
     // (optional)
     void destroy() {}
 
-    bool init(falcosecurity::init_input& i) { return true; }
+    bool init(falcosecurity::init_input& i)
+    {
+        printf("Ok1\n");
+        return true;
+    }
 
     bool extract(const falcosecurity::extract_fields_input& in)
     {
@@ -77,3 +81,4 @@ class my_plugin
 
 FALCOSECURITY_PLUGIN(my_plugin);
 FALCOSECURITY_PLUGIN_FIELD_EXTRACTION(my_plugin);
+FALCOSECURITY_EXPORT(extract_example_get_plugin_api);

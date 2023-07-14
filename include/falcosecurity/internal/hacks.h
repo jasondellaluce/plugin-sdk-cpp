@@ -19,7 +19,11 @@ limitations under the License.
 
 #define FALCOSECURITY_INLINE __attribute__((always_inline)) inline
 
+#if defined(FALCOSECURITY_STATIC)
+#define FALCOSECURITY_SYMBOL static FALCOSECURITY_INLINE
+#else
 #define FALCOSECURITY_SYMBOL extern "C"
+#endif
 
 #if defined(_DEBUG) or defined(DEBUG)
 #define FALCOSECURITY_ASSERT(__x, __msg)                                       \

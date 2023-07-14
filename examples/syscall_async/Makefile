@@ -28,4 +28,4 @@ clean:
 	rm -rf $(OUTPUT)
 
 $(OUTPUT): *.cpp
-	$(CXX) $(CXX_FLAGS) -o $(OUTPUT) $(CXX_FLAGS) *.cpp
+	$(CXX) $(CXX_FLAGS) -o $(OUTPUT) *.cpp
