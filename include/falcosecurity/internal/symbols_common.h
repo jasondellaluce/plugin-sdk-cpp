@@ -25,55 +25,61 @@ limitations under the License.
     namespace _internal                                                        \
     {                                                                          \
                                                                                \
-    static plugin_mixin<__t> s_plugin_common;                                  \
+    using FALCOSECURITY_UNIQUEPREFIX(common_plugin_alias) = __t;               \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    static plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(common_plugin_alias)>       \
+            s_plugin_common;                                                   \
+                                                                               \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_required_api_version()                              \
     {                                                                          \
         return s_plugin_common.get_required_api_version();                     \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_version() { return s_plugin_common.get_version(); } \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_name() { return s_plugin_common.get_name(); }       \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_description()                                       \
     {                                                                          \
         return s_plugin_common.get_description();                              \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_contact() { return s_plugin_common.get_contact(); } \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_init_schema(ss_plugin_schema_type* st)              \
     {                                                                          \
         return s_plugin_common.get_init_schema(st);                            \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_last_error(ss_plugin_t* s)                          \
     {                                                                          \
-        auto p = static_cast<plugin_mixin<__t>*>(s);                           \
+        auto p = static_cast<plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(          \
+                common_plugin_alias)>*>(s);                                    \
         return p->get_last_error();                                            \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     ss_plugin_t* plugin_init(const ss_plugin_init_input* input,                \
                              ss_plugin_rc* rc)                                 \
     {                                                                          \
-        auto res = new plugin_mixin<__t>();                                    \
+        auto res = new plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(                \
+                common_plugin_alias)>();                                       \
         *rc = res->init(input);                                                \
         return static_cast<ss_plugin_t*>(res);                                 \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     void plugin_destroy(ss_plugin_t* s)                                        \
     {                                                                          \
-        auto p = static_cast<plugin_mixin<__t>*>(s);                           \
+        auto p = static_cast<plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(          \
+                common_plugin_alias)>*>(s);                                    \
         p->destroy();                                                          \
         delete p;                                                              \
     }                                                                          \

@@ -108,4 +108,4 @@ class my_plugin
 
 FALCOSECURITY_PLUGIN(my_plugin);
 FALCOSECURITY_PLUGIN_EVENT_SOURCING(my_plugin, my_event_source);
-FALCOSECURITY_EXPORT(source_example_get_plugin_api);
+FALCOSECURITY_EXPORT();

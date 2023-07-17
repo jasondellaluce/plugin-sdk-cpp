@@ -81,4 +81,4 @@ class my_plugin
 
 FALCOSECURITY_PLUGIN(my_plugin);
 FALCOSECURITY_PLUGIN_FIELD_EXTRACTION(my_plugin);
-FALCOSECURITY_EXPORT(extract_example_get_plugin_api);
+FALCOSECURITY_EXPORT();

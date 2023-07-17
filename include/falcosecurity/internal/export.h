@@ -23,7 +23,10 @@ limitations under the License.
 #include <falcosecurity/internal/symbols_parsing.h>
 #include <falcosecurity/internal/symbols_sourcing.h>
 
-#define FALCOSECURITY_EXPORT(__s)                                              \
+#ifndef FALCOSECURITY_STATIC
+#define FALCOSECURITY_EXPORT()
+#else // FALCOSECURITY_STATIC
+#define FALCOSECURITY_EXPORT()                                                 \
                                                                                \
     namespace falcosecurity                                                    \
     {                                                                          \
@@ -36,7 +39,8 @@ limitations under the License.
     static FALCOSECURITY_INLINE void plugin_symbols_event_parsing(...) {}      \
     static FALCOSECURITY_INLINE void plugin_symbols_async_events(...) {}       \
                                                                                \
-    extern "C" void __s(plugin_api* out)                                       \
+    extern "C" void FALCOSECURITY_UNIQUEPREFIX(get_plugin_api)(plugin_api *    \
+                                                               out)            \
     {                                                                          \
         memset(out, 0, sizeof(plugin_api));                                    \
         plugin_symbols_common(out);                                            \
@@ -48,3 +52,4 @@ limitations under the License.
                                                                                \
     }; /* namespace _internal */                                               \
     }; /* namespace _internal */
+#endif // FALCOSECURITY_STATIC

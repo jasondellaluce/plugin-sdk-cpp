@@ -25,42 +25,49 @@ limitations under the License.
     namespace _internal                                                        \
     {                                                                          \
                                                                                \
-    static plugin_mixin<__t> s_plugin_extraction;                              \
+    template<typename T>                                                       \
+    using FALCOSECURITY_UNIQUEPREFIX(extraction_plugin_alias) = T;             \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    static plugin_mixin <                                                      \
+            FALCOSECURITY_UNIQUEPREFIX(extraction_plugin_alias) < __t          \
+            >> s_plugin_extraction;                                            \
+                                                                               \
+    FALCOSECURITY_API_SYMBOL                                                   \
     uint16_t* plugin_get_extract_event_types(uint32_t* numtypes)               \
     {                                                                          \
         return s_plugin_extraction.get_extract_event_types(numtypes);          \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_extract_event_sources()                             \
     {                                                                          \
         return s_plugin_extraction.get_extract_event_sources();                \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_fields()                                            \
     {                                                                          \
         return s_plugin_extraction.get_fields();                               \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     ss_plugin_rc                                                               \
     plugin_extract_fields(ss_plugin_t* s, const ss_plugin_event_input* evt,    \
                           const ss_plugin_field_extract_input* in)             \
     {                                                                          \
-        auto p = static_cast<plugin_mixin<__t>*>(s);                           \
+        auto p = static_cast<plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(          \
+                                                  extraction_plugin_alias) <   \
+                                          __t>>* > (s);                        \
         return p->extract_fields(evt, in);                                     \
     }                                                                          \
                                                                                \
     FALCOSECURITY_INLINE                                                       \
     static void plugin_symbols_field_extraction(plugin_api* out)               \
     {                                                                          \
-        out->get_extract_event_types = plugin_get_extract_event_types;          \
-        out->get_extract_event_sources = plugin_get_extract_event_sources;      \
-        out->get_fields = plugin_get_fields;                                    \
-        out->extract_fields = plugin_extract_fields;                            \
+        out->get_extract_event_types = plugin_get_extract_event_types;         \
+        out->get_extract_event_sources = plugin_get_extract_event_sources;     \
+        out->get_fields = plugin_get_fields;                                   \
+        out->extract_fields = plugin_extract_fields;                           \
     }                                                                          \
                                                                                \
     }; /* _internal */                                                         \

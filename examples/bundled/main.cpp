@@ -4,8 +4,8 @@
 
 using api_t = falcosecurity::_internal::plugin_api;
 
-extern "C" void source_example_get_plugin_api(api_t*);
-extern "C" void extract_example_get_plugin_api(api_t*);
+extern "C" void source_get_plugin_api(api_t*);
+extern "C" void extract_get_plugin_api(api_t*);
 
 void print_api(api_t* out)
 {
@@ -46,11 +46,11 @@ void print_api(api_t* out)
 int main(int argc, char** argv)
 {
     api_t source_example;
-    source_example_get_plugin_api(&source_example);
+    source_get_plugin_api(&source_example);
     print_api(&source_example);
 
     api_t extract_example;
-    extract_example_get_plugin_api(&extract_example);
+    extract_get_plugin_api(&extract_example);
     print_api(&extract_example);
     return 0;
 }

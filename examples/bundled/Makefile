@@ -34,11 +34,11 @@ $(OUTPUT): libplugin-source.a libplugin-extract.a *.cpp
 	+$(CXX) $(CXX_FLAGS) -o $(OUTPUT) ./main.cpp ./libplugin-extract.a ./libplugin-source.a 
 
 libplugin-source.a: $(PLUGIN_SOURCE_DIR)/*.cpp
-	+$(CXX) -c $(CXX_FLAGS) -static -DFALCOSECURITY_STATIC -o ./libplugin-source.o $(CXX_FLAGS) $(PLUGIN_SOURCE_DIR)/*.cpp
+	+$(CXX) -c $(CXX_FLAGS) -static -DFALCOSECURITY_STATIC=source_ -o ./libplugin-source.o $(CXX_FLAGS) $(PLUGIN_SOURCE_DIR)/*.cpp
 	+$(AR) rcs ./libplugin-source.a ./libplugin-source.o
 
 libplugin-extract.a: $(PLUGIN_EXTRACT_DIR)/*.cpp
-	+$(CXX) -c $(CXX_FLAGS) -static -DFALCOSECURITY_STATIC -o ./libplugin-extract.o $(CXX_FLAGS) $(PLUGIN_EXTRACT_DIR)/*.cpp
+	+$(CXX) -c $(CXX_FLAGS) -static -DFALCOSECURITY_STATIC=extract_ -o ./libplugin-extract.o $(CXX_FLAGS) $(PLUGIN_EXTRACT_DIR)/*.cpp
 	+$(AR) rcs ./libplugin-extract.a ./libplugin-extract.o
 
 

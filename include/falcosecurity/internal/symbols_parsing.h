@@ -25,35 +25,39 @@ limitations under the License.
     namespace _internal                                                        \
     {                                                                          \
                                                                                \
-    static plugin_mixin<__t> s_plugin_parsing;                                 \
+    using FALCOSECURITY_UNIQUEPREFIX(parsing_plugin_alias) = __t;              \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    static plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(parsing_plugin_alias)>      \
+            s_plugin_parsing;                                                  \
+                                                                               \
+    FALCOSECURITY_API_SYMBOL                                                   \
     uint16_t* plugin_get_parse_event_types(uint32_t* numtypes)                 \
     {                                                                          \
         return s_plugin_parsing.get_parse_event_types(numtypes);               \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     const char* plugin_get_parse_event_sources()                               \
     {                                                                          \
         return s_plugin_parsing.get_parse_event_sources();                     \
     }                                                                          \
                                                                                \
-    FALCOSECURITY_SYMBOL                                                       \
+    FALCOSECURITY_API_SYMBOL                                                   \
     ss_plugin_rc plugin_parse_event(ss_plugin_t* s,                            \
                                     const ss_plugin_event_input* evt,          \
                                     const ss_plugin_event_parse_input* in)     \
     {                                                                          \
-        auto p = static_cast<plugin_mixin<__t>*>(s);                           \
+        auto p = static_cast<plugin_mixin<FALCOSECURITY_UNIQUEPREFIX(          \
+                parsing_plugin_alias)>*>(s);                                   \
         return p->parse_event(evt, in);                                        \
     }                                                                          \
                                                                                \
     FALCOSECURITY_INLINE                                                       \
     static void plugin_symbols_async_events(plugin_api* out)                   \
     {                                                                          \
-        out->get_parse_event_sources = plugin_get_parse_event_sources;          \
-        out->get_parse_event_types = plugin_get_parse_event_types;              \
-        out->parse_event = plugin_parse_event;                                  \
+        out->get_parse_event_sources = plugin_get_parse_event_sources;         \
+        out->get_parse_event_types = plugin_get_parse_event_types;             \
+        out->parse_event = plugin_parse_event;                                 \
     }                                                                          \
                                                                                \
     }; /* _internal */                                                         \

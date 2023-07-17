@@ -20,10 +20,19 @@ limitations under the License.
 #define FALCOSECURITY_INLINE __attribute__((always_inline)) inline
 
 #if defined(FALCOSECURITY_STATIC)
-#define FALCOSECURITY_SYMBOL static FALCOSECURITY_INLINE
-#else
-#define FALCOSECURITY_SYMBOL extern "C"
-#endif
+#define FALCOSECURITY_API_SYMBOL static FALCOSECURITY_INLINE
+#define FALCOSECURITY_UNIQUEPREFIX_ FALCOSECURITY_STATIC
+#else // defined(FALCOSECURITY_STATIC)
+#define FALCOSECURITY_API_SYMBOL extern "C"
+#define FALCOSECURITY_UNIQUEPREFIX_
+#endif // defined(FALCOSECURITY_STATIC)
+
+#define FALCOSECURITY_CONCAT_(__x, __y) __x##__y
+
+#define FALCOSECURITY_CONCAT(__x, __y) FALCOSECURITY_CONCAT_(__x, __y)
+
+#define FALCOSECURITY_UNIQUEPREFIX(__x)                                        \
+    FALCOSECURITY_CONCAT(FALCOSECURITY_UNIQUEPREFIX_, __x)
 
 #if defined(_DEBUG) or defined(DEBUG)
 #define FALCOSECURITY_ASSERT(__x, __msg)                                       \
